@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-
+import HomeView from '../views/login/HomeView.vue'
+import Register from '../views/login/RegisterView.vue'
+import DashboardView from '../views/role/DashboardView.vue'
+import EditRoleView from '../views/role/EditRoleView.vue'
+import NewRoleView from '../views/role/NewRoleView.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -10,14 +13,27 @@ const routes = [
     name: 'home',
     component: HomeView
   },
+ {
+    path: '/register',
+    name: 'register',
+    component: Register
+ },
+ {
+   path: '/dashboard',
+    name: 'DashboardView',
+    component: DashboardView
+ },
+
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    path:'/edit/:id',
+    name:'EditRoleView',
+    component:EditRoleView
+  },
+  {
+    path:'/newRole',
+    name:'NewRoleView',
+    component:NewRoleView
+  },
 ]
 
 const router = new VueRouter({
