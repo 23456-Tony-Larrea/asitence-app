@@ -1,10 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/login/HomeView.vue'
-import Register from '../views/login/RegisterView.vue'
-import DashboardView from '../views/role/DashboardView.vue'
-import EditRoleView from '../views/role/EditRoleView.vue'
-import NewRoleView from '../views/role/NewRoleView.vue'
+import HomeView from '../views/Login/HomeView.vue'
+import RegisterRoleView from '../views/Role/RegisterRoleView.vue'
+import CrudProductsView from '../views/products/CrudProductsView'
 Vue.use(VueRouter)
 
 const routes = [
@@ -13,27 +11,16 @@ const routes = [
     name: 'home',
     component: HomeView
   },
- {
-    path: '/register',
-    name: 'register',
-    component: Register
- },
- {
-   path: '/dashboard',
-    name: 'DashboardView',
-    component: DashboardView
- },
-
   {
-    path:'/edit/:id',
-    name:'EditRoleView',
-    component:EditRoleView
+    path:'/products',
+    name:'CrudProductsView',
+    component:CrudProductsView
   },
   {
-    path:'/newRole',
-    name:'NewRoleView',
-    component:NewRoleView
-  },
+   path:'/registerRole',
+   name:'RegisterRoleView',
+   component:RegisterRoleView
+  }
 ]
 
 const router = new VueRouter({
