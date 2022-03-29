@@ -4,9 +4,11 @@ const app=express();
 app.set('port',process.env.PORT||3000);
 const users=require('./routes/users');
 const roles=require('./routes/roles');
+const products=require('./routes/products');
 app.use(express.json());
 app.use(cors());
 //routes
+app.use('/products',products);
 app.use('/users',users);
 app.use('/roles',roles);
 

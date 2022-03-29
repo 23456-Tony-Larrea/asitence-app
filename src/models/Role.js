@@ -4,7 +4,7 @@ const Role=sequelize.define('Role',{
     nameRole:{
         type:DataTypes.STRING,
         allowNull:false,
-        unique:true
+        unique:false
     },
 },{
 timestamps:false,
