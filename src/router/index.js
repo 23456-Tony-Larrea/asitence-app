@@ -2,7 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/Login/HomeView.vue'
 import RegisterRoleView from '../views/Role/RegisterRoleView.vue'
-import CrudProductsView from '../views/products/CrudProductsView'
+import CrudProductsView from '../views/Products/CrudProductsView'
+import CrudUsersView from '../views/Users/CrudUsersView'
 Vue.use(VueRouter)
 
 const routes = [
@@ -20,6 +21,11 @@ const routes = [
    path:'/registerRole',
    name:'RegisterRoleView',
    component:RegisterRoleView
+  },
+  {
+    path:'/users',
+    name:'CrudUsersView',
+    component:CrudUsersView
   }
 ]
 

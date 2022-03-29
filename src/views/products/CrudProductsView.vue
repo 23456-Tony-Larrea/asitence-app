@@ -5,7 +5,7 @@
         <Navbar/>
     </div>
     <v-card class="mx auto mt-5" color="transparent" max-width="1280" elevation="0">
-    <v-btn class="mx2" fab dark color="#e0440fb" @click="formNew()"><v-icon>mdi-plus</v-icon></v-btn>
+   <!--  <v-btn class="mx2" fab dark color="#e0440fb" @click="formNew()"><v-icon>mdi-plus</v-icon></v-btn> -->
     <v-simple-table class="mat-5">
         <template v-slot:default>
             <thead>
@@ -44,7 +44,7 @@
                     <input hidden v-model="products.codProduct">
                 
                     <v-col cols="12" md="4">
-                            <v-text-field v-model="products.nameProduct" label="Nombre" required>{{products.nameProduct}}</v-text-field>
+                            <v-text-field v-model="products.nameProduct" label="Nombre" required >{{products.nameProduct}}</v-text-field>
                     </v-col>
                     <v-col cols="12" md="4">
                             <v-text-field v-model="products.category" label="Categoria" required>{{products.category}}</v-text-field>
@@ -131,7 +131,7 @@ export default {
         axios.put('http://localhost:3000/products/'+this.products.codProduct,params).then(data=>{
             this.show();
             Swal.fire({
-                position: 'top-end',
+                position: 'center',
                 icon: 'success',
                 type: 'success',
                 title: 'Rol editado correctamente',
