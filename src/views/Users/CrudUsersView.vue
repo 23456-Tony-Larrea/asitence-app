@@ -1,15 +1,15 @@
 <template>
 
 <div>
-    <div class="">
+    <div class="container">
         <Navbar/>
     </div>
-    <v-card class="mx auto mt-5" color="transparent" max-width="1280" elevation="0">
-    <v-btn class="mx2" fab dark color="#e0440fb" @click="formNew()" disabled><v-icon>mdi-plus</v-icon></v-btn> 
+    <v-card class="mx auto mt-2 container" color="transparent"  elevation="1000">
+        <v-btn class="mx2" fab dark color="#009688" @click="formNew()"><v-icon>mdi-plus</v-icon></v-btn>    
    <v-simple-table class="mat-5">
         <template v-slot:default>
             <thead>
-                <tr class="purple darken-2">
+                <tr class="blue darken-2">
                     <th class="white-text">ID</th>
                     <th class="white-text">Nombres del usuario</th>
                     <th class="white-text">Apellidos del usuario</th>
@@ -45,16 +45,16 @@
                     <input hidden v-model="users.id">
                 
                     <v-col cols="12" md="4">
-                            <v-text-field v-model="users.firstName" label="Nombres" required disabled>{{users.firstName}}</v-text-field>
+                            <v-text-field v-model="users.firstName" label="Nombres" required >{{users.firstName}}</v-text-field>
                     </v-col>
                     <v-col cols="12" md="4">
-                            <v-text-field v-model="users.lastName" label="Apellidos" required disabled>{{users.lastName}}</v-text-field>
+                            <v-text-field v-model="users.lastName" label="Apellidos" required >{{users.lastName}}</v-text-field>
                     </v-col>
                     <v-col cols="12" md="4">
                             <v-text-field v-model="users.email" label="Email" required >{{users.email}}</v-text-field>
                     </v-col>
                     <v-col cols="12" md="4">
-                            <v-text-field v-model="users.password" label="Contraseña" required disabled>{{users.password}}</v-text-field>
+                            <v-text-field v-model="users.password" label="Contraseña" required >{{users.password}}</v-text-field>
                     </v-col>
                     <v-col cols="12" md="4">
                             <v-text-field v-model="users.RoleId" label="Rol" required>{{users.RoleId}}</v-text-field>

@@ -1,16 +1,17 @@
 <template>
 
 <div>
-    <div class="">
-        <Navbar/>
+    <div class="container">
+     <Navbar/>
     </div>
-    <v-card class="mx auto mt-5" color="transparent" max-width="1280" elevation="0">
-   <!--  <v-btn class="mx2" fab dark color="#e0440fb" @click="formNew()"><v-icon>mdi-plus</v-icon></v-btn> -->
+    
+    <v-card class="mx auto mt-2 container " color="transparent"  elevation="1000"  >
+    <v-btn class="mx2" fab dark color="#009688" @click="formNew()"><v-icon>mdi-plus</v-icon></v-btn> 
     <v-simple-table class="mat-5">
         <template v-slot:default>
             <thead>
-                <tr class="purple darken-2">
-                    <th class="white-text">Codigo del producto </th>
+                <tr class="blue darken-2">
+                    <th class="">Codigo del producto </th>
                     <th class="white-text">Nombre del Producto</th>
                     <th class="white-text">Categoria</th>
                     <th class="white-text">Fabricante</th>
@@ -71,8 +72,8 @@
 </div>
 </template>
 <script>
-    import Navbar from '@/components/Header.vue';
     import axios from 'axios';
+    import Navbar from '../../components/Header.vue';
     import Swal from 'sweetalert2';
 export default {
    name: 'CrudProductsView',
@@ -194,4 +195,5 @@ export default {
 }
 </script>
 <style scoped>
+    
 </style>
