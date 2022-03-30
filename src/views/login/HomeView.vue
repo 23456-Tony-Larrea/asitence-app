@@ -197,7 +197,7 @@ export default {
                 timer: 1500
               })
           console.log(data.data.usuario);
-             this.$router.push('/products');
+             this.$router.push('/users');
       }
       }).catch(e=>{
         console.log(e)
@@ -230,7 +230,7 @@ export default {
                 showConfirmButton: false,
                 timer: 1500
               })
-      this.$router.push('/register')
+      this.$router.push('/')
       }else{
         Swal.fire({
                 position: 'center',

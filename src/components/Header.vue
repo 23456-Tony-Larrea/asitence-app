@@ -20,6 +20,7 @@
                
                     </v-list-item> 
             </v-list-item-group>
+<!-- 
               <v-list-item-group color="black" >
               
                 <v-list-item active-class="border" class="ml-2 my-3" :ripple="false">
@@ -30,7 +31,26 @@
                         <v-icon color="white">fa-solid fa-phone</v-icon>
                         </router-link>
                     </v-list-item-icon>
-               
+                        <b></b>
+                        <b></b>
+     
+                    </v-list-item> 
+            </v-list-item-group> -->
+        
+        <v-list-item-group color="black" >
+              
+                <v-list-item active-class="border" class="ml-2 my-3" :ripple="false">
+                        <b></b>
+                        <b></b>
+                    <v-list-item-icon>
+                      <router-link to="/roles">
+                        <v-icon color="white">fa-solid fa-user-secret</v-icon>
+                         
+                        </router-link>
+                    </v-list-item-icon>
+                        <b></b>
+                        <b></b>
+     
                     </v-list-item> 
             </v-list-item-group>
         </v-list>

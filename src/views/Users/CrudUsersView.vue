@@ -5,7 +5,7 @@
         <Navbar/>
     </div>
     <v-card class="mx auto mt-2 container" color="transparent"  elevation="1000">
-        <v-btn class="mx2" fab dark color="#009688" @click="formNew()"><v-icon>mdi-plus</v-icon></v-btn>    
+       <!--  <v-btn class="mx2" fab dark color="#009688" @click="formNew()"><v-icon>mdi-plus</v-icon></v-btn> -->    
    <v-simple-table class="mat-5">
         <template v-slot:default>
             <thead>
@@ -14,7 +14,7 @@
                     <th class="white-text">Nombres del usuario</th>
                     <th class="white-text">Apellidos del usuario</th>
                     <th class="white-text">email</th>                 
-                    <th class="white-text">Rol</th>
+                    <th class="white-text" >Rol</th>
                     <th class="white-text">Acciones</th>
                 </tr>
             </thead>
@@ -24,8 +24,7 @@
                 <td>{{users.firstName}}</td>
                 <td>{{users.lastName}}</td>
                 <td>{{users.email}}</td>
-
-                <td>{{users.RoleId}}</td>
+                <td>{{users.role.nameRole}}</td>
                 <td>
                     <v-btn fab dark small color="green" @click="formEdit(users.id,users.firstName,users.lastName,users.email,users.password,users.RoleId)"><v-icon>mdi-pencil</v-icon></v-btn>
                     <v-btn fab dark small color="red" @click="deleteUser(users.id)"><v-icon>mdi-delete</v-icon></v-btn>
@@ -54,10 +53,16 @@
                             <v-text-field v-model="users.email" label="Email" required >{{users.email}}</v-text-field>
                     </v-col>
                     <v-col cols="12" md="4">
-                            <v-text-field v-model="users.password" label="Contraseña" required >{{users.password}}</v-text-field>
+                            <v-text-field v-model="users.password" label="Contraseña" required disabled>{{users.password}}</v-text-field>
                     </v-col>
                     <v-col cols="12" md="4">
-                            <v-text-field v-model="users.RoleId" label="Rol" required>{{users.RoleId}}</v-text-field>
+                            <v-select 
+                            v-model="users.RoleId" 
+                            label="Rol" 
+                            :items="listRoles" 
+                            item-text="nameRole" 
+                            item-value="id" required>
+                            </v-select>
                     </v-col>
                 </v-row>
             </v-container>
@@ -91,21 +96,32 @@ export default {
                 lastName:'',
                 email:'',
                 password:'',
-                RoleId:''
+                RoleId:null,
+                nameRole:''
             },
             listUsers:[],
+            listRoles:[],
             dialog:false,
             operation:''
         }
     },
     created(){
         this.show();
-    },
+        this.showRoles();
+      },
     methods:{
     show(){
         axios.get('http://localhost:3000/users').then(data=>{
-            this.listUsers=data.data.users;
-            console.log(data.data.users)
+            this.listUsers=data.data;
+           
+        });
+    },
+    showRoles(){
+        axios.get('http://localhost:3000/roles').then(data=>{
+            this.listRoles=data.data; 
+            console.log(data.data);
+            this.nameRole=data.data.nameRole;
+
         });
     },
     create(){
@@ -200,6 +216,7 @@ export default {
         this.users.email=email;
         this.users.password=password;
         this.users.RoleId=RoleId;
+
     }
     }
 }
