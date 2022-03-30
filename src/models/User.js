@@ -25,4 +25,5 @@ tableName: 'Users'
 });
 User.belongsTo(Role, {foreignKey: 'RoleId',as: 'role'});
 Role.hasMany(User,);
+
 module.exports = User;

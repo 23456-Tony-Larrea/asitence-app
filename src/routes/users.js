@@ -2,13 +2,14 @@ const router=require('express').Router();
 const {verifyPassword} = require('../helpers/hash');
 const {hash}=require('../helpers/hash')
 const User= require('../models/User');
+const Role= require('../models/Role');
 
 router.get('/',async(req, res,)=>{
-    const users= await User.findAll();
-res.json({users});
-});
+    const users= await User.findAll({include:[{model:Role,as:'role'}]});
+     res.send(users);
+    }); 
 router.post('/register',async (req, res)=>{
-    const {firstName, lastName,email,password,roleId} = req.body;
+    const {firstName, lastName,email,password,RoleId} = req.body;
    
     const exist= await User.findOne({where:{email}});
    
@@ -16,7 +17,7 @@ router.post('/register',async (req, res)=>{
          res.status(409).send('User already exist');
          res.json({errror:"User already exist"});
    } 
-    const user= await User.create({firstName:firstName,lastName:lastName,email:email,password:hash(password),RoleId:roleId});
+    const user= await User.create({firstName:firstName,lastName:lastName,email:email,password:hash(password),RoleId:RoleId});
     res.json(user);
 });
 
@@ -49,12 +50,12 @@ router.get('/:id',async (req, res)=>{
 
 router.put('/:id',async (req, res)=>{
     const {id}=req.params;
-    const {firstName, lastName,email,password,roleId}=req.body;
+    const {firstName, lastName,email,RoleId}=req.body;
     const user=await User.findByPk(id);
     if(!user){
         return res.status(404).send('User not found');
     }
-    const updatedUser=await user.update({firstName, lastName,email,password:hash(password),RoleId:roleId});
+    const updatedUser=await user.update({firstName, lastName,email,RoleId:RoleId});
     res.json(updatedUser);
 });
 router.delete('/:id',async(req, res)=>{
@@ -67,4 +68,5 @@ router.delete('/:id',async(req, res)=>{
     res.json({msg:'User deleted'});
 }
 );
+
 module.exports=router;
