@@ -135,7 +135,7 @@ export default {
                 position: 'center',
                 icon: 'success',
                 type: 'success',
-                title: 'Rol editado correctamente',
+                title: 'Producto editado correctamente',
                 showConfirmButton: false,
                 timer: 1500
               })

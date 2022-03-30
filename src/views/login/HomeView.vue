@@ -177,7 +177,15 @@ export default {
     axios.post('http://localhost:3000/users/login',json)
     .then(data=>{
       if(data.data.message==="Unauthorized" || data.data.message==="bad request" ) {
-              this.$toaster.error('Usuario Incorecto.');
+                Swal.fire({
+                position: 'center',
+                icon: 'error',
+                type: 'error',
+                title: 'Usuario incorrecto',
+                showConfirmButton: false,
+                timer: 1500
+              })
+         
      this.$router.push('/');  
       }else{
              Swal.fire({
@@ -195,8 +203,8 @@ export default {
         console.log(e)
              Swal.fire({
                 position: 'center',
-                icon: 'warning',
-                type: 'warning',
+                icon: 'error',
+                type: 'error',
                 title: 'Usuario o contraseña Incorrecto',
                 showConfirmButton: false,
                 timer: 1500
@@ -216,8 +224,8 @@ export default {
       if(data.data.message=="Unauthorized" || data.data.message=="Bad Request") {
            Swal.fire({
                 position: 'center',
-                icon: 'warning',
-                type: 'warning',
+                icon: 'error',
+                type: 'error',
                 title: 'Usuario no encontrado',
                 showConfirmButton: false,
                 timer: 1500
@@ -240,8 +248,8 @@ export default {
         console.log(error)
       Swal.fire({
                 position: 'center',
-                icon: 'warning',
-                type: 'warning',
+                icon: 'error',
+                type: 'error',
                 title: 'Usuario Incorecto',
                 showConfirmButton: false,
                 timer: 1500
