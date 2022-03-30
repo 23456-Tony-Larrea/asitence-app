@@ -150,6 +150,7 @@
 <script>
 // @ is an alias to /src
 import axios from 'axios';
+import Swal from 'sweetalert2';
 export default {
   name: 'HomeView',
   components: {
@@ -179,13 +180,27 @@ export default {
               this.$toaster.error('Usuario Incorecto.');
      this.$router.push('/');  
       }else{
-            this.$toaster.success('Bienvenido Admin.');
+             Swal.fire({
+                position: 'center',
+                icon: 'success',
+                type: 'success',
+                title: 'Bienvenido',
+                showConfirmButton: false,
+                timer: 1500
+              })
           console.log(data.data.usuario);
              this.$router.push('/products');
       }
       }).catch(e=>{
         console.log(e)
-        this.$toaster.error('Usuario incorrecto.');
+             Swal.fire({
+                position: 'center',
+                icon: 'warning',
+                type: 'warning',
+                title: 'Usuario o contraseña Incorrecto',
+                showConfirmButton: false,
+                timer: 1500
+              })
             this.$router.push('/');
         })
   },
@@ -199,17 +214,38 @@ export default {
     axios.post('http://localhost:3000/users/register',json)
     .then(data=>{
       if(data.data.message=="Unauthorized" || data.data.message=="Bad Request") {
-          this.$toaster.error('Usuario Incorrecto')
+           Swal.fire({
+                position: 'center',
+                icon: 'warning',
+                type: 'warning',
+                title: 'Usuario no encontrado',
+                showConfirmButton: false,
+                timer: 1500
+              })
       this.$router.push('/register')
       }else{
-        this.$toaster.success('Usuario Registrado')
+        Swal.fire({
+                position: 'center',
+                icon: 'success',
+                type: 'success',
+                title: 'Usuario Registrado con exito!',
+                showConfirmButton: false,
+                timer: 1500
+              })
         console.log(data.data.user)
         this.$router.push('/')
       }
     })
     .catch(error=>{
         console.log(error)
-      this.$toaster.error('Usuario Iconrrecto')
+      Swal.fire({
+                position: 'center',
+                icon: 'warning',
+                type: 'warning',
+                title: 'Usuario Incorecto',
+                showConfirmButton: false,
+                timer: 1500
+              })
         this.$router.push('/register');
       });
   } 
