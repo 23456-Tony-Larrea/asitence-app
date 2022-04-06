@@ -4,6 +4,7 @@ import HomeView from '../views/Login/HomeView.vue'
 import CrudRoleView from '../views/Role/CrudRoleView.vue'
 import CrudProductsView from '../views/Products/CrudProductsView'
 import CrudUsersView from '../views/Users/CrudUsersView'
+import CreateInvoiceView from '@/views/InvoiceDashboard/CreateInvoiceView'
 Vue.use(VueRouter)
 
 const routes = [
@@ -26,6 +27,12 @@ const routes = [
     path:'/users',
     name:'CrudUsersView',
     component:CrudUsersView
+  },
+  
+  {
+    path:'/invoices/create',
+    name:'CreateInvoiceView',
+    component:CreateInvoiceView
   }
 ]
 

@@ -20,22 +20,22 @@
                
                     </v-list-item> 
             </v-list-item-group>
-<!-- 
+ 
               <v-list-item-group color="black" >
               
                 <v-list-item active-class="border" class="ml-2 my-3" :ripple="false">
                         <b></b>
                         <b></b>
                     <v-list-item-icon>
-                      <router-link to="/products">
-                        <v-icon color="white">fa-solid fa-phone</v-icon>
+                      <router-link to="/invoices/create">
+                        <v-icon color="white">mdi-file</v-icon>
                         </router-link>
                     </v-list-item-icon>
                         <b></b>
                         <b></b>
      
                     </v-list-item> 
-            </v-list-item-group> -->
+            </v-list-item-group> 
         
         <v-list-item-group color="black" >
               
