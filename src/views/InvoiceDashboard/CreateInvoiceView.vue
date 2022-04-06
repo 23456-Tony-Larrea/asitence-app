@@ -195,7 +195,7 @@
     @click="createInvoicePdf"
     >
     Crear Factura
-    <v-icon>mdi-plus</v-icon>
+    <v-icon>mdi-file-pdf</v-icon>
     <template v-slot:loader>
       <span>Loading...</span>
               </template>     

@@ -53,6 +53,22 @@
      
                     </v-list-item> 
             </v-list-item-group>
+                    <v-list-item-group color="black" >
+              
+                <v-list-item active-class="border" class="ml-2 my-3" :ripple="false">
+                        <b></b>
+                        <b></b>
+                    <v-list-item-icon>
+                      <router-link to="/products">
+                        <v-icon color="white">mdi-shopping</v-icon>
+                         
+                        </router-link>
+                    </v-list-item-icon>
+                        <b></b>
+                        <b></b>
+     
+                    </v-list-item> 
+            </v-list-item-group>
         </v-list>
         <div style="position: absolute; bottom: 20px;
         margin-left: auto; margin-right: auto; left:0; right: 0; text-align: center;">
