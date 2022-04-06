@@ -2,7 +2,7 @@
 
 <div>
    
-    
+    <Navbar/>
     <v-card class="mx auto mt-2 container " color="transparent"  elevation="1000"  >
     <v-btn class="mx2" fab dark color="#009688" @click="formNew()"><v-icon>mdi-plus</v-icon></v-btn> 
     <v-simple-table class="mat-5">
@@ -72,9 +72,11 @@
 <script>
     import axios from 'axios';
     import Swal from 'sweetalert2';
+    import Navbar from '../../components/Header.vue'
 export default {
    name: 'CrudProductsView',
- 
+ components:{
+    Navbar},
   data(){
         return {
             products:{
