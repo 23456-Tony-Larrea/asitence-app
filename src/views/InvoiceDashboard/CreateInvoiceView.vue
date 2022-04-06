@@ -278,7 +278,7 @@ export default {
               ,title: 'Cancelado'
               ,text: 'Factura Cancelada',
               showConfirmButton: false,
-              footer:'<a href="/invoices/create">Regresar</a>'
+              footer:'<a href="/products">Regresar</a>'
             })
           },
              createInvoicePdf(){
