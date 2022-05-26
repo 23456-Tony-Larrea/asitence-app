@@ -2,9 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/Login/HomeView.vue'
 import CrudRoleView from '../views/Role/CrudRoleView.vue'
-import CrudProductsView from '../views/Products/CrudProductsView'
 import CrudUsersView from '../views/Users/CrudUsersView'
-import CreateInvoiceView from '@/views/InvoiceDashboard/CreateInvoiceView'
+import CrudCourseView from '../views/Course/CrudCourseView'
 Vue.use(VueRouter)
 
 const routes = [
@@ -13,11 +12,7 @@ const routes = [
     name: 'home',
     component: HomeView
   },
-  {
-    path:'/products',
-    name:'CrudProductsView',
-    component:CrudProductsView
-  },
+
   {
    path:'/roles',
    name:'RegisterRoleView',
@@ -30,9 +25,9 @@ const routes = [
   },
   
   {
-    path:'/invoices/create',
-    name:'CreateInvoiceView',
-    component:CreateInvoiceView
+    path:'/courses',
+    name:'CrudCourseView',
+    component:CrudCourseView
   }
 ]
 

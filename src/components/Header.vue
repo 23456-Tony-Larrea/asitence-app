@@ -38,37 +38,21 @@
      
                     </v-list-item> 
             </v-list-item-group>
-                    <v-list-item-group color="black" >
+            <v-list-item-group color="black" >
               
                 <v-list-item active-class="border" class="ml-2 my-3" :ripple="false">
                         <b></b>
                         <b></b>
                     <v-list-item-icon>
-                      <router-link to="/products">
-                        <v-icon color="white">mdi-shopping</v-icon>
+                      <router-link to="/courses">
+                        <v-icon color="white">fa-solid fa-school-flag</v-icon>
                          
                         </router-link>
                     </v-list-item-icon>
                         <b></b>
                         <b></b>
      
-                    </v-list-item> 
-            </v-list-item-group>
-            
-              <v-list-item-group color="black" >
-              
-                <v-list-item active-class="border" class="ml-2 my-3" :ripple="false">
-                        <b></b>
-                        <b></b>
-                    <v-list-item-icon>
-                      <router-link to="/invoices/create">
-                        <v-icon color="white">mdi-file</v-icon>
-                        </router-link>
-                    </v-list-item-icon>
-                        <b></b>
-                        <b></b>
-     
-                    </v-list-item> 
+                    </v-list-item>
             </v-list-item-group>
         </v-list>
         <div style="position: absolute; bottom: 20px;

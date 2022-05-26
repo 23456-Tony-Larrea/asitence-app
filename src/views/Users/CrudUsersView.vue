@@ -15,6 +15,7 @@
                     <th class="white-text">Apellidos del usuario</th>
                     <th class="white-text">email</th>                 
                     <th class="white-text" >Rol</th>
+                    <th class="white-text" >Curso</th>
                     <th class="white-text">Acciones</th>
                 </tr>
             </thead>
@@ -25,6 +26,7 @@
                 <td>{{users.lastName}}</td>
                 <td>{{users.email}}</td>
                 <td>{{users.role.nameRole}}</td>
+                <td>{{users.course.courseParallelName}}</td>
                 <td>
                     <v-btn fab dark small color="green" @click="formEdit(users.id,users.firstName,users.lastName,users.email,users.password,users.RoleId)"><v-icon>mdi-pencil</v-icon></v-btn>
                     <v-btn fab dark small color="red" @click="deleteUser(users.id)"><v-icon>mdi-delete</v-icon></v-btn>
@@ -64,6 +66,15 @@
                             item-value="id" required>
                             </v-select>
                     </v-col>
+                    <v-col cols="12" md="4">
+                            <v-select 
+                            v-model="users.courseId" 
+                            label="Curso" 
+                            :items="listCourses" 
+                            item-text="courseParallelName" 
+                            item-value="id" required>
+                            </v-select>
+                    </v-col>
                 </v-row>
             </v-container>
             </v-form>
@@ -97,10 +108,13 @@ export default {
                 email:'',
                 password:'',
                 RoleId:null,
-                nameRole:''
+                nameRole:'',
+                courseId:null,
+                courseParallelName:''
             },
             listUsers:[],
             listRoles:[],
+            listCourses:[],
             dialog:false,
             operation:''
         }
@@ -119,9 +133,18 @@ export default {
     showRoles(){
         axios.get('http://localhost:3000/roles').then(data=>{
             this.listRoles=data.data; 
+            if(data.data.length==0){
+                this.users.nameRole='asignar un rol';
+            }
+        });
+    },
+    showCourses(){
+        axios.get('http://localhost:3000/courses').then(data=>{
+            this.listCourses=data.data; 
             console.log(data.data);
-            this.nameRole=data.data.nameRole;
-
+            if(data.data.length==0){
+                this.users.courseParallelName='asignar un curso';
+            }
         });
     },
     create(){
@@ -130,7 +153,8 @@ export default {
             lastName:this.users.lastName,
             email:this.users.email,
             password:this.users.password,
-            RoleId:this.users.RoleId
+            RoleId:this.users.RoleId,
+            courseId:this.users.courseId
         }
         axios.post('http://localhost:3000/users/register',params).then(data=>{
             this.show();
@@ -141,7 +165,7 @@ export default {
         this.users.email='';
         this.users.password='';
         this.users.RoleId='';
-
+        this.users.courseId='';
     },
     edit(){
         let params = {
@@ -150,7 +174,8 @@ export default {
             lastName:this.users.lastName,
             email:this.users.email,
             password:this.users.password,
-            RoleId:this.users.RoleId
+            RoleId:this.users.RoleId,
+            courseId:this.users.courseId
             }
         axios.put('http://localhost:3000/users/'+this.users.id,params).then(data=>{
             this.show();
@@ -169,6 +194,7 @@ export default {
         this.users.email='';
         this.users.password='';
         this.users.RoleId='';
+        this.users.courseId='';
 },
     deleteUser(id){
         Swal.fire({        
@@ -206,8 +232,9 @@ export default {
         this.operation.email='';
         this.operation.password='';
         this.operation.RoleId='';
+        this.operation.courseId='';
     },
-    formEdit(id,firstName,lastName,email,password,RoleId){
+    formEdit(id,firstName,lastName,email,password,RoleId,courseId){
         this.dialog=true;
         this.operation='edit';
         this.users.id=id;
@@ -216,6 +243,7 @@ export default {
         this.users.email=email;
         this.users.password=password;
         this.users.RoleId=RoleId;
+        this.users.courseId=courseId;
 
     }
     }
